@@ -6,7 +6,7 @@ services:
       - '5432'
     volumes:
       - 'postgresql_master_data:/bitnami/postgresql'
-      - ./configs/postgresql.conf:/opt/bitnami/postgresql/conf/postgresql.conf:rw     
+     ## - ./configs/postgresql.conf:/opt/bitnami/postgresql/conf/postgresql.conf:rw     
     environment:
       - POSTGRESQL_REPLICATION_MODE=master
       - POSTGRESQL_REPLICATION_USER=repl_user
@@ -25,8 +25,8 @@ services:
       - '5432'
     depends_on:
       - postgresql-master
-    volumes:    
-      - ./configs/postgresql.conf:/opt/bitnami/postgresql/conf/postgresql.conf:rw  
+  ##  volumes:    
+     ## - ./configs/postgresql.conf:/opt/bitnami/postgresql/conf/postgresql.conf:rw  
     environment:
       - POSTGRESQL_REPLICATION_MODE=slave
       - POSTGRESQL_REPLICATION_USER=repl_user
@@ -40,7 +40,7 @@ services:
    
       
   pgadmin:
-    image: dpage/pgadmin4:snapshot
+    image: dpage/pgadmin4:latest
     container_name: pgadmin
     restart: always
     ports:
